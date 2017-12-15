@@ -1,0 +1,25 @@
+<h4>Players Component</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Player Name</th>
+      <th>Position</th>
+      <th>Jersey Number</th>
+      <th>Date of Birth</th>
+      <th>Nationality</th>
+      <th>Contract Valid Until</th>
+      <th>Market Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of playersArray.players" >
+      <td>{{ player.name }}</td>
+      <td>{{ player.position }}</td>
+      <td>{{ player.jerseyNumber }}</td>
+      <td>{{ player.dateOfBirth }}</td>
+      <td>{{ player.nationality }}</td>
+      <td>{{ player.contractUntil }}</td>
+      <td>{{ player.marketValue }}</td>
+    </tr>
+  </tbody>
+</table>
