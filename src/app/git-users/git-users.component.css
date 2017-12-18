@@ -1,0 +1,13 @@
+.flex-item {
+  background: #fff;
+  display: inline-block;
+  width: 48%;
+  box-sizing: border-box;
+  margin: 1%;
+  padding: 20px;
+}
+.flex-item img {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+}

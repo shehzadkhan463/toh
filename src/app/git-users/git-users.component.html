@@ -1,3 +1,6 @@
-<div *ngFor="let item of collection" >
-
+<div class="flex-item" *ngFor="let gitUser of gitUsersArray" >
+  <p>Login: {{ gitUser.login }}</p>
+  <img src="{{ gitUser.avatar_url }}" alt="">
+  <p>Type: {{ gitUser.type }}</p>
+  <p>View Account: <a href="{{ gitUser.html_url }}" target="_blank"> Click Here</a></p>
 </div>

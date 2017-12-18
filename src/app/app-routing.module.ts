@@ -7,6 +7,14 @@ const appRoutes: Routes = [
   {
     path: 'players',
     loadChildren: 'app/players/players.module#PlayersModule'
+  },
+  {
+    path: 'git-users',
+    loadChildren: 'app/git-users/git-users.module#GitUsersModule'
+  },
+  {
+    path: 'toh',
+    loadChildren: 'app/toh/toh.module#TohModule'
   }
 ];
 

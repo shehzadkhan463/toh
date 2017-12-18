@@ -11,7 +11,7 @@
       <th>Market Value</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="playersArray">
     <tr *ngFor="let player of playersArray.players" >
       <td>{{ player.name }}</td>
       <td>{{ player.position }}</td>
