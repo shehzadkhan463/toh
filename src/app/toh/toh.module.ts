@@ -10,13 +10,14 @@ import { MessageService } from './messages/message.service';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '../in-memory-data-service';
+
 
 @NgModule({
   imports: [
     // tslint:disable-next-line:max-line-length
-    CommonModule, TohRoutingModule, FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+    CommonModule, TohRoutingModule, FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
   ],
   declarations: [TohComponent, HeroesComponent, HeroDetailComponent, MessagesComponent, DashboardComponent],
   providers: [HeroService, MessageService]

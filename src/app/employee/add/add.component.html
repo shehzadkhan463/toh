@@ -1,0 +1,44 @@
+<h4>Add a New Test data</h4>
+<form [formGroup]="employeeForm" novalidate (ngSubmit)="createEmployee(employeeForm.value, employeeForm.valid)" >
+  <div class="form-group" [ngClass]="{'has-error': (employeeForm.get('firstName').touched || employeeForm.get('firstName').dirty ) && !employeeForm.get('firstName').valid }">
+    <input type="text" class="form-control" id="firstName" placeholder="Enter the First Name" formControlName="firstName" >
+    <span class="help-block" *ngIf="(employeeForm.get('firstName').touched || employeeForm.get('firstName').dirty ) && employeeForm.get('firstName').errors " >
+      <span *ngIf="employeeForm.get('firstName').errors.required" >
+        This Field Cant be Empty. Please Enter the First Name
+      </span>
+      <span *ngIf="employeeForm.get('firstName').errors.minlength" >
+        Please Enter atleast 3 characters
+      </span>
+    </span>
+  </div>
+  <div class="form-group" [ngClass]="{'hasError': (employeeForm.get('lastName').touched || employeeForm.get('lastName').dirty ) && !employeeForm.get('lastName').valid }">
+    <input type="text" class="form-control" id="lastName" placeholder="Enter the Last Name" formControlName="lastName" >
+    <span class="help-block" *ngIf="(employeeForm.get('lastName').touched || employeeForm.get('lastName').dirty ) && employeeForm.get('lastName').errors" >
+      <span *ngIf="employeeForm.get('lastName').errors.required" >
+          This Field Cant be Empty. Please Enter the Last Name
+      </span>
+      <span *ngIf="employeeForm.get('lastName').errors.maxlength" >
+        Can't Exceed 8 characters
+      </span>
+    </span>
+  </div>
+  <div class="form-group" [ngClass]="{'hasError': (employeeForm.get('email').touched || employeeForm.get('email').dirty ) && !employeeForm.get('email').valid }">
+    <input type="email" class="form-control" id="email" placeholder="Enter the Email" formControlName="email" >
+    <span class="help-block" *ngIf="(employeeForm.get('email').touched || employeeForm.get('email').dirty) && employeeForm.get('email').errors" >
+      <span *ngIf="employeeForm.get('email').errors.required">
+        Email Can't be Empty
+      </span>
+      <span *ngIf="employeeForm.get('email').errors.minlength" >
+        Please enter atleast 4 characters
+      </span>
+    </span>
+  </div>
+  <div class="form-group">
+    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your Phone Number" formControlName="phoneNumber" >
+  </div>
+  <div class="form-group">
+    <input type="radio" value="email" formControlName="notification" (click) = "setNotification('email')" > Email
+    <input type="radio" value="phone" formControlName="notification" (click) = "setNotification('phone')" > Phone
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>

@@ -15,6 +15,10 @@ const appRoutes: Routes = [
   {
     path: 'toh',
     loadChildren: 'app/toh/toh.module#TohModule'
+  },
+  {
+    path: 'employee',
+    loadChildren: 'app/employee/employee.module#EmployeeModule'
   }
 ];
 
