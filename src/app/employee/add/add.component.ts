@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AddService } from './add.service';
+import { Employee } from '../employee.model';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  templateUrl: './add.component.html'
 })
 export class AddComponent implements OnInit {
+  employee: Employee;
   public employeeForm: FormGroup;
-  constructor(private eForm: FormBuilder, private addService: AddService) { }
+  constructor(private eForm: FormBuilder, private addService: AddService, private router: Router) {
+    this.employee = new Employee();
+   }
 
   ngOnInit() {
     this.employeeForm = this.eForm.group({
@@ -19,6 +22,15 @@ export class AddComponent implements OnInit {
       notification: 'email',
       isActive: true
     });
+  }
+  addEmployee(): void {
+    let emp = Object.assign({}, this.employeeForm.value);
+    this.addService.addEmployee(emp)
+      .subscribe( () => {
+        this.employeeForm.reset();
+        this.router.navigate(['/employee/view']);
+      });
+
   }
   // createEmployee(): void {
   //   this.addService.createEmployee('id')

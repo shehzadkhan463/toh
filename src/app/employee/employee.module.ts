@@ -12,12 +12,18 @@ import { ViewComponent } from './view/view.component';
 import { AddService } from './add/add.service';
 import { EditService } from './edit/edit.service';
 import { ViewService } from './view/view.service';
+import { DeleteService } from './delete.service';
 
 @NgModule({
   imports: [
-    CommonModule, EmployeeRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryCrudDataService, { dataEncapsulation: false }),
+    CommonModule,
+    EmployeeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryCrudDataService, { dataEncapsulation: false }),
   ],
   declarations: [ViewComponent, AddComponent, EditComponent],
-  providers: [AddService, EditService, ViewService]
+  providers: [AddService, EditService, ViewService, DeleteService]
 })
 export class EmployeeModule { }

@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxJs/Rx';
 import { Employee } from '../employee.model';
-import { HttpClient,  } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable()
 export class EditService {
   private employeesUrl = 'api/employees';
-  employee: Employee;
   constructor(private http: HttpClient) { }
   editEmployee(id: number): Observable<Employee> {
       const url = `${this.employeesUrl}/${id}`;
-      return this.http.put(url, id)
-          .map(() => this.employee)
-          .do(data => console.log('updateProduct: ' + JSON.stringify(data)))
-          .catch(this.handleError);
+      return this.http.get<Employee>(url);
   }
-  getId() {}
-  private handleError(error: Response): Observable<any> {
-    return;
+  updateEmployee(employee: Employee): Observable<any> {
+    console.log("SERVICE" + employee);
+    return this.http.put(this.employeesUrl, employee, httpOptions);
   }
 }

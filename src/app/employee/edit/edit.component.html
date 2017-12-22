@@ -1,5 +1,5 @@
 <h4>Add a New Test data</h4>
-<form [formGroup]="employeeForm" novalidate (ngSubmit)="editEmployee(employeeForm.value, employeeForm.valid)" >
+<form [formGroup]="employeeForm" novalidate *ngIf="employee" >
   <div class="form-group" [ngClass]="{'has-error': (employeeForm.get('firstName').touched || employeeForm.get('firstName').dirty ) && !employeeForm.get('firstName').valid }">
     <input type="text" class="form-control" id="firstName" placeholder="Enter the First Name" formControlName="firstName" >
     <span class="help-block" *ngIf="(employeeForm.get('firstName').touched || employeeForm.get('firstName').dirty ) && employeeForm.get('firstName').errors " >
@@ -40,5 +40,7 @@
     <input type="radio" value="email" formControlName="notification" (click) = "setNotification('email')" > Email
     <input type="radio" value="phone" formControlName="notification" (click) = "setNotification('phone')" > Phone
   </div>
-  <button type="submit" class="btn btn-primary">Add</button>
+  <button type="submit" class="btn btn-primary" (click) = "updateEmployee(employee)" >Save</button>
+  <button type="submit" class="btn btn-primary" (click) = "deleteEmployee()" >Delete</button>
+
 </form>

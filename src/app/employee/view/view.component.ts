@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee.model';
 import { ViewService } from './view.service';
+import { DeleteService } from '../delete.service';
 
 @Component({
-  selector: 'app-view',
-  templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  templateUrl: './view.component.html'
 })
 export class ViewComponent implements OnInit {
   employees: Employee[];
-  constructor( private viewService: ViewService) { }
+  constructor( private viewService: ViewService, private deleteService: DeleteService) { }
 
   ngOnInit() {
     this.getEmployees();
@@ -21,5 +20,9 @@ export class ViewComponent implements OnInit {
       },
       error => console.log('Error')
     );
+  }
+  deleteEmployee(id: number): void {
+    this.deleteService.deleteEmployee(id);
+    console.log(id);
   }
 }
