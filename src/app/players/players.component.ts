@@ -15,9 +15,33 @@ export class PlayersComponent implements OnInit {
     this.playersService.getPlayers()
       .subscribe( players => {
         this.playersArray = players;
+        delete players.players[0].name;
+        console.log(players);
       },
       error => console.log('Error: ' + error)
     );
+  }
+  getPlayersWithSelectedDatails(arrayName, key) {
+    // function removeKeys(obj, keysToDelete) {
+    //   Object.keys(obj).forEach(function(key) {
+    //   if((obj[key] && typeof obj[key] === 'object' && !(obj[key] instanceof Array))){
+    //    removeEmpty(obj[key], keysToDelete);
+    //   } else if ((key === keysToDelete)) {
+    //         delete obj[key];
+    //     }
+    //   });
+    //   return obj;
+    // };
+  }
+  removeKeys(obj, keysToDelete) {
+    Object.keys(obj).forEach(function(key) {
+      if ((obj[key] && typeof obj[key] === 'object' && !(obj[key] instanceof Array ))) {
+        // removeEmpty(obj[key], keysToDelete);//
+      } else if ((key === keysToDelete)) {
+              delete obj[key];
+          }
+    });
+    return obj;
   }
   ngOnInit() {
     this.getPlayers();

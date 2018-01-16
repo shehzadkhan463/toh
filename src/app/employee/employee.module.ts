@@ -13,6 +13,7 @@ import { AddService } from './add/add.service';
 import { EditService } from './edit/edit.service';
 import { ViewService } from './view/view.service';
 import { DeleteService } from './delete.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { DeleteService } from './delete.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryCrudDataService, { dataEncapsulation: false }),
   ],
   declarations: [ViewComponent, AddComponent, EditComponent],

@@ -14,7 +14,9 @@ export class GitUsersComponent implements OnInit {
     this.gitUsersService.getUsers()
       .subscribe(gitUsers => {
         this.gitUsersArray = gitUsers;
-        console.log(gitUsers);
+        console.log(gitUsers[0]);
+        delete gitUsers[0].avatar_url;
+        console.log(gitUsers[0]);
       },
       error => console.log('Error: ' + error)
     );

@@ -6,7 +6,8 @@ import { Observable } from  'rxjs/Observable';
 export class ViewService {
   private employeesUrl = 'api/employees';
   constructor(private http: HttpClient) { }
-  getEmployees(): Observable<Employee[]> {
+  getEmployees(offset: number, limit: number): Observable<Employee[]> {
+    console.log("limit: " + limit);
     return this.http.get<Employee[]>(this.employeesUrl);
   }
 }

@@ -14,7 +14,9 @@ export class PlayersService {
     return this.http
       .get('http://api.football-data.org/v1/teams/66/players')
       .map(( response: Response ) => {
-        return <any>response.json();
+        const responseData = <any>response.json();
+        console.log(responseData);
+        return responseData;
       })
       .catch(this.handleError);
   }
