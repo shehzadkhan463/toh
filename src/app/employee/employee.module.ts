@@ -12,7 +12,6 @@ import { ViewComponent } from './view/view.component';
 import { AddService } from './add/add.service';
 import { EditService } from './edit/edit.service';
 import { ViewService } from './view/view.service';
-import { DeleteService } from './delete.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -26,6 +25,6 @@ import { SharedModule } from '../shared/shared.module';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryCrudDataService, { dataEncapsulation: false }),
   ],
   declarations: [ViewComponent, AddComponent, EditComponent],
-  providers: [AddService, EditService, ViewService, DeleteService]
+  providers: [AddService, EditService, ViewService]
 })
 export class EmployeeModule { }

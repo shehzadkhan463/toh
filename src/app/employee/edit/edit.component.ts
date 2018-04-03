@@ -5,7 +5,6 @@ import { Location } from '@angular/common';
 //--//
 import { EditService } from "./edit.service";
 import { Employee } from "../employee.model";
-import { DeleteService } from '../delete.service';
 
 @Component({
   templateUrl: "./edit.component.html"
@@ -19,8 +18,7 @@ export class EditComponent implements OnInit {
     private route: ActivatedRoute,
     private eForm: FormBuilder,
     private location: Location,
-    private router: Router,
-    private deleteService: DeleteService
+    private router: Router
   ) {
     this.employee = new Employee();
     this.id = +this.route.snapshot.paramMap.get("id");
@@ -72,10 +70,6 @@ export class EditComponent implements OnInit {
         this.router.navigate(['/employee/view']);
       });
     console.log('After RETURN  ' + this.employee);
-  }
-  deleteEmployee(): void {
-    this.deleteService.deleteEmployee(this.employee.id);
-    console.log(this.employee.id);
   }
   setNotification(notifyVia: string): void {
     const phoneControl = this.employeeForm.get('phoneNumber');

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from '../employee.model';
 import { ViewService } from './view.service';
-import { DeleteService } from '../delete.service';
 
 @Component({
   templateUrl: './view.component.html'
@@ -15,7 +14,7 @@ export class ViewComponent implements OnInit {
   bigTotalItems: number = 175;
   bigCurrentPage: number = 1;
   numPages: number = 0;
-  constructor( private viewService: ViewService, private deleteService: DeleteService) { }
+  constructor( private viewService: ViewService) { }
 
   ngOnInit() {
     this.getEmployees(this.offset, this.limit);
@@ -30,7 +29,8 @@ export class ViewComponent implements OnInit {
     );
   }
   deleteEmployee(id: number): void {
-    this.deleteService.deleteEmployee(id);
+    this.viewService.deleteEmployee(id);
+    this.getEmployees(this.offset, this.limit);
     console.log(id);
   }
   onPageChange(offset) {
